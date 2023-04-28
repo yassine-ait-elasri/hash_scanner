@@ -1,4 +1,4 @@
-import requests
+    import requests
 import hashlib
 import json
 
@@ -24,7 +24,7 @@ data = response.json()
 
 '''print(response.args[data])'''
 if(len(data['data'])):
-    print("YOU GOT "+data['data'][0]['attributes']['names'][0]+" VIRUS")
+    print("YOU GOT "+data['data'][0]['attributes']['names'][0]+" VIRUS"+"\nthis file is potentially harmful or malicious and should not be opened or executed")
    ## print("for more details "+response.text)
 else :
     print("nothing has being detected")
