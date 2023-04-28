@@ -3,7 +3,7 @@ import hashlib
 import json
 
 filename = input("What is the file path ?\n")
-
+flag =0
 with open(filename, "rb") as f:
     file_contents = f.read()
 md5_hash = hashlib.md5()
@@ -21,15 +21,21 @@ headers = {
 
 response = requests.get(url, headers=headers)
 data = response.json()
+##print("for more details "+response.text)
 
-'''print(response.args[data])'''
-if(len(data['data'])):
+try  :
+    if(data['data'][0]['attributes']['type_description']!="unknown"):
+        flag=1
+except Exception as e:
+    if(len(data['data'])):
+        flag=1
+
+if(flag==1):
     print("YOU GOT "+data['data'][0]['attributes']['names'][0]+" VIRUS"+"\nthis file is potentially harmful or malicious and should not be opened or executed")
-   ## print("for more details "+response.text)
-else :
+else:
     print("nothing has being detected")
     
 print("Press any key to exit...")
 input()
-    
+
 
